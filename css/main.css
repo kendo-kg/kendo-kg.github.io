@@ -1,0 +1,263 @@
+:root {
+	--left_width: 250px;
+	--margin_width: 5px;
+	--header_height: 240px;
+	--middle_height: 900px;
+	
+	--lighter_grey: rgba(195, 195, 195, 1);
+	--darker_grey: rgba(106, 106, 106, 1);
+	--nice_green: rgba(121, 144, 136, 1);
+	--nice_blue: rgba(136, 166, 185, 1);
+	
+	--menu_height: 40px;
+	
+	--content_height: 138px;
+	--west_width: 200px;
+	
+	--main_width: 1130px;
+}
+
+* {
+	box-sizing: border-box;
+	font-family: Arial;
+}
+
+a {
+	text-decoration: none;
+}
+
+.main {
+	width: var(--main_width);
+	margin: auto;
+	padding: var(--margin_width);
+	border: 1px solid black;
+	background-color: var(--darker_grey);
+}
+
+.header .left, .header .right {
+	float: left;
+}
+
+.header::after {
+	display: table;
+	clear: both;
+	content: "";
+}
+
+.header {
+	margin-bottom: var(--margin_width);
+	height: var(--header_height);
+}
+
+.header .left, .header .right {
+	height: 100%
+}
+
+.header .left {
+	background-color: white;
+	padding: var(--margin_width);
+}
+
+
+.middle .left, .middle .right {
+	float: left;
+}
+
+.middle::after {
+	display: table;
+	clear: both;
+	content: "";
+}
+
+.middle {
+	height: var(--middle_height);
+}
+
+.middle .left, .middle .right {
+	height: 100%;
+}
+
+.middle .right {
+	padding: var(--margin_width);
+}
+
+.left {
+	width: var(--left_width);
+	margin-right: var(--margin_width);
+}
+
+.left, .right {
+	background-color: lightgrey;
+	border: 1px solid black;
+}
+
+.right {
+	width: calc(100% - var(--left_width) - var(--margin_width));
+}
+
+.menu-container {
+	padding: var(--margin_width);
+}
+
+.menu {
+	width: 100%;
+	height: var(--menu_height);
+	border: 1px solid black;
+	margin-bottom: var(--margin_width);
+	
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	
+	font-weight: bold;
+	color: white;
+	
+	background-color: var(--nice_green);
+}
+
+.menu:hover {
+	background-color: var(--nice_blue);
+}
+
+.logo-img {
+	width: 100%;
+	height: 100%;
+	object-fit: fill;
+}
+
+.header-img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+
+.content-container {
+	width: 100%;
+	height: var(--content_height);
+	margin-bottom: var(--margin_width);
+	
+}
+
+.content-container .west {
+	float: left;
+}
+
+.content-container::after {
+	clear: both;
+	display: table;
+	content: "";
+}
+
+.east, .west {
+	height: 100%;
+}
+
+.west {
+	width: var(--west_width);
+	border: 1px solid black;
+	margin-right: var(--margin_width);
+}
+
+.east {
+	width: calc(100% - var(--west_width) - var(--margin_width));
+	border: 1px solid black;
+	
+	display: flex;
+	align-items: center;
+
+	padding: calc(2*var(--margin_width));
+}
+
+.content-img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+
+.alt-menu-container {
+	display:none;
+	
+	background-color: lightgrey;
+	border: 1px solid black;
+	padding: var(--margin_width);
+	padding-bottom: 0px;
+	padding-right: 0px;
+	border-bottom: none;
+}
+
+.alt-menu-container .menu {
+	margin-right: var(--margin_width);
+}
+
+.alt-menu-container .menu {
+	float: left;
+}
+
+.alt-menu-container::after {
+	clear: both;
+	display: table;
+	content: "";
+}
+
+@media only screen and (max-width: 1160px) { /*main_width + 30*/
+	.main {
+		width: 100%;
+	}	
+}
+
+@media only screen and (max-width: 1000px) {
+	.header .left, .middle .left {
+		display: none;
+	}
+	
+	.right {
+		width: 100%;
+	}
+	
+	.alt-menu-container {
+		display: block;
+	}
+	
+	.middle .right {
+		padding-top: 0px;
+		border-top: none;
+	}
+	
+	.alt-menu-container .menu {
+		width: calc(33.3% - var(--margin_width));
+	}
+}
+
+@media only screen and (max-width: 800px) {
+	.alt-menu-container .menu {
+		width: calc(50% - var(--margin_width));
+	}
+}
+
+@media only screen and (max-width: 600px) {
+	.alt-menu-container {
+		padding-right: var(--margin_width);
+	}
+	
+	.alt-menu-container .menu {
+		width: 100%;
+	}
+	
+	.content-container .west, .content-container .east {
+		float: none;
+	}
+	
+	.east {
+		width: 100%;
+		margin-top: var(--margin_width);
+	}
+	
+	.west {
+		width: 100%;
+		justify-content: center;
+	}
+	
+	.middle .right .content-container {
+		margin-bottom: calc(var(--content_height) + 2*var(--margin_width));
+	}
+}
